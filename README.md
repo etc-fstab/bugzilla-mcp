@@ -20,7 +20,7 @@ MCP stands for  **Model Context Protocol** . It defines how an AI application di
 
 **The MCP server is the program that exposes these functions. In our case, it is a Python program running locally.**
 
-The “Server” describes its role. It does not mean we need a separate server machine.
+The "Server" describes its role. It does not mean we need a separate server machine.
 
 # What the agent does
 
@@ -28,7 +28,7 @@ The agent is the AI working inside Codex, with instructions and access to tools.
 
 For example, when I ask:
 
-“Show bugs assigned to me that were resolved in October 2026.”
+"Show bugs assigned to me that were resolved in October 2026."
 
 The agent interprets the request, chooses the monthly reporting tool, and supplies the year and month.
 
@@ -50,7 +50,7 @@ Our Python program contains no AI model and needs no separate OpenAI API key. Th
 
 The flow is:
 
-My request → Codex agent → local MCP server → Bugzilla REST API
+My request -> Codex agent ->  local MCP server ->  Bugzilla REST API
 
 The response travels back through the same components.
 
@@ -110,13 +110,13 @@ smoke_stdio.py checks that a real server subprocess starts and exposes its MCP t
 
 # What .venv provides
 
-A virtual environment keeps this program’s Python dependencies separate from other Python installations.
+A virtual environment keeps this program's Python dependencies separate from other Python installations.
 
 It is an ordinary directory on the laptop. It is not a container or a security boundary.
 
 Its contents remain after reboot. However, the environment depends on the base Python installation used to create it.
 
-Our environment was created using Codex’s bundled Python. If that runtime disappears after an application update, we may need to rebuild the environment.
+Our environment was created using Codex's bundled Python. If that runtime disappears after an application update, we may need to rebuild the environment.
 
 A separately installed local Python can also be used.
 
@@ -168,7 +168,7 @@ Confirm the Bugzilla URL, default owner, and reporting timezone.
 
 **Step 5: Set the API key.**
 
-Open Windows “Edit environment variables for your account.”
+Open Windows - Edit environment variables for your account.
 
 Create BUGZILLA_API_KEY under User variables and enter the key locally.
 
@@ -188,7 +188,7 @@ On this laptop, registration is in:
 
 `C:\Users\your-name\.codex\config.toml`
 
-The registration names the server bugzilla_monthly and specifies the full paths to the project’s Python executable and server.py.
+The registration names the server bugzilla_monthly and specifies the full paths to the project's Python executable and server.py.
 
 codex-mcp.toml provides the example settings. Paths must be adjusted for another laptop.
 
@@ -210,7 +210,7 @@ The client sends GET requests through an allowlist of Bugzilla read endpoints.
 
 It exposes no operation to create bugs, edit fields, add comments, or change status.
 
-The API key’s permissions still determine which bugs can be read. The program’s read-only design does not change the account’s permissions within Bugzilla.
+The API key's permissions still determine which bugs can be read. The program's read-only design does not change the account's permissions within Bugzilla.
 
 # Does Git make sense?
 
